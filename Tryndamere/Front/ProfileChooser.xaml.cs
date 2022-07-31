@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,20 +10,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Tryndamere.Controller;
 
 namespace Tryndamere.Front
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour ProfileChooser.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProfileChooser : Page
     {
-        public MainWindow()
+        public ProfileChooser()
         {
             InitializeComponent();
-
-            new MainController(this);
         }
     }
 }

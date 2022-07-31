@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Text.Json;
 
 namespace Tryndamere.Back
 {
@@ -19,7 +20,10 @@ namespace Tryndamere.Back
 
             foreach (String profileFolder in Directory.GetDirectories("Data\\"))
             {
-                returner.Add(new Profile(profileFolder));
+                Profile profile = new Profile(profileFolder);
+
+                if (profile.metaData != null)
+                    returner.Add(profile);
             }
 
             return returner;
@@ -51,10 +55,23 @@ namespace Tryndamere.Back
 
         private String profileFolder { get => "Data\\" + metaData.name + "\\"; }
 
+        private String metaDataFile { get => profileFolder + "metadata.json"; }
+
 
         private Profile(String profileFolder)
         {
+            if (!File.Exists(profileFolder + "\\metadata.json"))
+                return;
 
+            try
+            {
+                string metadataContent = File.ReadAllText(profileFolder + "metadata.json");
+                metaData = JsonSerializer.Deserialize<Model.ProfileMetaData>(metadataContent);
+            }
+            catch(JsonException e)
+            {
+                return;
+            }
         }
 
         private Profile(String name, String description, String password)
@@ -76,11 +93,15 @@ namespace Tryndamere.Back
                 Directory.CreateDirectory(profileFolder);
             }
 
-
+            File.WriteAllText(profileFolder + "metadata.json", JsonSerializer.Serialize(metaData));
         }
 
         private void delete()
         {
+            foreach(String file in Directory.GetFiles(profileFolder))
+            {
+                File.Delete(file);
+            }
             Directory.Delete(profileFolder);
         }
     }
