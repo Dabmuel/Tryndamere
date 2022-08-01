@@ -57,6 +57,8 @@ namespace Tryndamere.Back
 
         private String metaDataFile { get => profileFolder + "metadata.json"; }
 
+        public Model.ProfileMetaData getMetaData { get => metaData; }
+
 
         private Profile(String profileFolder)
         {
@@ -65,7 +67,7 @@ namespace Tryndamere.Back
 
             try
             {
-                string metadataContent = File.ReadAllText(profileFolder + "metadata.json");
+                string metadataContent = File.ReadAllText(profileFolder + "\\metadata.json");
                 metaData = JsonSerializer.Deserialize<Model.ProfileMetaData>(metadataContent);
             }
             catch(JsonException e)
