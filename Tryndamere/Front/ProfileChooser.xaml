@@ -9,10 +9,11 @@
       Title="ProfileChooser" Margin="0,0,0,0">
 
     <Grid>
-        <ListBox x:Name="profileListBox" Margin="10,10,10,70"/>
+        <ListBox x:Name="profileListBox" Margin="10,10,10,70" SizeChanged="profileListBox_SizeChanged"/>
         <Button x:Name="newProfileButton" Content="Nouveau profil" HorizontalAlignment="Right" Height="30" Margin="0,0,50,20" VerticalAlignment="Bottom" Width="100
                 ">
         </Button>
+        <StackPanel/>
 
     </Grid>
 </Page>

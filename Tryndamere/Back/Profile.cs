@@ -98,7 +98,7 @@ namespace Tryndamere.Back
             File.WriteAllText(profileFolder + "metadata.json", JsonSerializer.Serialize(metaData));
         }
 
-        private void delete()
+        public void delete()
         {
             foreach(String file in Directory.GetFiles(profileFolder))
             {

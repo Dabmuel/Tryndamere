@@ -8,27 +8,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Tryndamere.Front
 {
     /// <summary>
-    /// Logique d'interaction pour ProfileChooser.xaml
+    /// Logique d'interaction pour AddProfile.xaml
     /// </summary>
-    public partial class ProfileChooser : Page
+    public partial class AddProfile : Window
     {
-        public ProfileChooser()
+        public AddProfile()
         {
             InitializeComponent();
         }
 
-        private void profileListBox_SizeChanged(object sender, SizeChangedEventArgs e)
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach(Frame frame in ((ListBox)sender).Items)
-            {
-                frame.Width = ((ListBox)sender).ActualWidth - 14;
-            }
+            this.Close();
         }
     }
 }
