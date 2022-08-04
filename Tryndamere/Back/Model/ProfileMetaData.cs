@@ -13,5 +13,7 @@ namespace Tryndamere.Back.Model
         public String name { get; set; }
 
         public String description { get; set; }
+
+        public int credentialCount { get; set; } = 0;
     }
 }

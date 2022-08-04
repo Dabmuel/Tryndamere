@@ -53,11 +53,15 @@ namespace Tryndamere.Back
 
         private Model.ProfileMetaData metaData;
 
+        private Model.ProfileData data;
+
         private String profileFolder { get => "Data\\" + metaData.name + "\\"; }
 
         private String metaDataFile { get => profileFolder + "metadata.json"; }
 
         public Model.ProfileMetaData getMetaData { get => metaData; }
+
+        public Model.ProfileData getData { get => data; }
 
 
         private Profile(String profileFolder)
